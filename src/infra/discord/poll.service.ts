@@ -1,5 +1,5 @@
 import { Inject, Injectable, Injector } from "injection-js";
-import { Message } from "discord.js";
+import { Message, TextChannel } from "discord.js";
 import { INumberedPoll } from "src/models/numberedPoll.model";
 import * as CONFING_JSON from '../../config.json';
 import { DiscordClient } from "./discordClient";
@@ -35,8 +35,13 @@ export class PollService {
         if (!CLASSIC_POLL_CONFIG.enabled) {
             return;
         }
+        const allowedChannels = CLASSIC_POLL_CONFIG.channels.map(channel => channel.id);
+        const channel = message.channel as TextChannel;
         if (CLASSIC_POLL_CONFIG.allChannels ||
-            CLASSIC_POLL_CONFIG.channels.map(channel => channel.id).includes(message.channelId) &&
+            (
+                allowedChannels.includes(message.channelId) ||
+                CLASSIC_POLL_CONFIG.subChannels && allowedChannels.includes(channel.parentId)
+            ) &&
             CLASSIC_POLL_CONFIG.keywords.some(v => message.content.includes(v))) {
             try {
                 for (let i = 0; i < CLASSIC_POLL_CONFIG.emojis.length; i++) {
@@ -57,7 +62,13 @@ export class PollService {
         if (!NUMBERED_POLL_CONFIG.enabled) {
             return;
         }
-        if (NUMBERED_POLL_CONFIG.allChannels || NUMBERED_POLL_CONFIG.channels.includes(message.channelId)) {
+        const allowedChannels = NUMBERED_POLL_CONFIG.channels.map(channel => channel.id);
+        const channel = message.channel as TextChannel;
+        if (NUMBERED_POLL_CONFIG.allChannels ||
+            (
+                allowedChannels.includes(message.channelId) ||
+                NUMBERED_POLL_CONFIG.subChannels && allowedChannels.includes(channel.parentId)
+            )) {
             let numberedPoll = this.getFirstNumberedPoll(message.content);
             if (numberedPoll == null) {
                 return;

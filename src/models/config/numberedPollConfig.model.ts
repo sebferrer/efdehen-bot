@@ -1,5 +1,8 @@
+import { IChannelConfig } from "./channelConfig.model";
+
 export interface INumberedPollConfig {
     enabled: boolean;
     allChannels: boolean;
-    channels: string[];
+    subChannels: boolean;
+    channels: IChannelConfig[];
 }

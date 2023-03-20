@@ -3,6 +3,7 @@
         "classic": {
             "enabled": true,
             "allChannels": false,
+            "subChannels": true,
             "channels": [
                 {
                     "id": "1062129921176121414",
@@ -15,6 +16,10 @@
                 {
                     "id": "951186293507907635",
                     "label": "FDN Sorties Fleuries"
+                },
+                {
+                    "id": "1073972470543024148",
+                    "label": "FDN Orga Par Sorties"
                 }
             ],
             "emojis": [
@@ -39,6 +44,7 @@
         "numbered": {
             "enabled": true,
             "allChannels": false,
+            "subChannels": true,
             "channels": [
                 {
                     "id": "1062129921176121414",
@@ -51,6 +57,10 @@
                 {
                     "id": "951186293507907635",
                     "label": "FDN Sorties Fleuries"
+                },
+                {
+                    "id": "1073972470543024148",
+                    "label": "FDN Orga Par Sorties"
                 }
             ]
         }
