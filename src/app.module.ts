@@ -5,6 +5,7 @@ import { CronsService } from "./infra/crons.service";
 import { DiscordClient } from "./infra/discord/discordClient";
 import { TextChannelService } from "./infra/discord/textChannel.service";
 import { CommandsRegisterer } from './commands/registerer/commandsRegisterer';
+import { PollService } from './infra/discord/poll.service';
 
 export class AppModule {
     private static injector: ReflectiveInjector;
@@ -13,7 +14,8 @@ export class AppModule {
         CommandsRegisterer,
         TextChannelService,
         ChannelsService,
-        CronsService
+        CronsService,
+        PollService
     ]
 
     private constructor() { }

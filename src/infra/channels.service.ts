@@ -14,15 +14,23 @@ export class ChannelsService {
         // private readonly dbContext: DbContext
     ) { }
 
-    public getChannels(): Observable<IChannel[]> {
+    public getAllChannels(): Observable<IChannel[]> {
         return of(CHANNELS).pipe(
             catchError(() => of(null))
         );
     }
 
     public getChannel(key: string): Observable<IChannel> {
-        return this.getChannels().pipe(
+        return this.getAllChannels().pipe(
             map(channels => channels.find(channel => channel.key === key))
+        ).pipe(
+            catchError(() => of(null))
+        );
+    }
+
+    public getChannels(keys: string[]): Observable<IChannel[]> {
+        return this.getAllChannels().pipe(
+            map(channels => channels.filter(channel => keys.includes(channel.key)))
         ).pipe(
             catchError(() => of(null))
         );

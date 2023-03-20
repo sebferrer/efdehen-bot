@@ -1,0 +1,55 @@
+{
+    "polls": {
+        "classic": {
+            "enabled": true,
+            "allChannels": false,
+            "channels": [
+                {
+                    "id": "1062129921176121414",
+                    "label": "Kimida Test"
+                },
+                {
+                    "id": "1087171556955922442",
+                    "label": "TFDN Efdehen Test"
+                },
+                {
+                    "id": "951186293507907635",
+                    "label": "FDN Sorties Fleuries"
+                }
+            ],
+            "emojis": [
+                {
+                    "standard": false,
+                    "id": "FDNOui"
+                },
+                {
+                    "standard": false,
+                    "id": "FDNPeutEtre"
+                },
+                {
+                    "standard": false,
+                    "id": "FDNNon"
+                }
+            ],
+            "keyword": "(sondage)"
+        },
+        "numbered": {
+            "enabled": true,
+            "allChannels": false,
+            "channels": [
+                {
+                    "id": "1062129921176121414",
+                    "label": "Kimida Test"
+                },
+                {
+                    "id": "1087171556955922442",
+                    "label": "TFDN Efdehen Test"
+                },
+                {
+                    "id": "951186293507907635",
+                    "label": "FDN Sorties Fleuries"
+                }
+            ]
+        }
+    }
+}
