@@ -6,14 +6,6 @@
             "subChannels": true,
             "channels": [
                 {
-                    "id": "1062129921176121414",
-                    "label": "Kimida Test"
-                },
-                {
-                    "id": "1087171556955922442",
-                    "label": "TFDN Efdehen Test"
-                },
-                {
                     "id": "951186293507907635",
                     "label": "FDN Sorties Fleuries"
                 },
@@ -46,14 +38,6 @@
             "allChannels": false,
             "subChannels": true,
             "channels": [
-                {
-                    "id": "1062129921176121414",
-                    "label": "Kimida Test"
-                },
-                {
-                    "id": "1087171556955922442",
-                    "label": "TFDN Efdehen Test"
-                },
                 {
                     "id": "951186293507907635",
                     "label": "FDN Sorties Fleuries"
