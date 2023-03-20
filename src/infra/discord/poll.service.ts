@@ -37,7 +37,7 @@ export class PollService {
             allChannels: classicPollsConfig.allChannels,
             channels: classicPollsConfig.channels.map((channel: any) => channel.id),
             emojis: classicPollsConfig.emojis,
-            keyword: classicPollsConfig.keyword
+            keywords: classicPollsConfig.keywords
         }
 
         const numberedPollsConfig = CONFIG.polls.numbered;
@@ -53,7 +53,7 @@ export class PollService {
             return;
         }
         if (this.classicPollConfig.allChannels ||
-            this.classicPollConfig.channels.includes(message.channelId) && message.content.includes(this.classicPollConfig.keyword)) {
+            this.classicPollConfig.channels.includes(message.channelId) && this.classicPollConfig.keywords.some(v => message.content.includes(v))) {
             try {
                 for (let i = 0; i < this.classicPollConfig.emojis.length; i++) {
                     const emojiConfig = this.classicPollConfig.emojis[i];

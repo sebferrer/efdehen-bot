@@ -31,7 +31,10 @@
                     "id": "FDNNon"
                 }
             ],
-            "keyword": "(sondage)"
+            "keywords": [
+                "(sondage)",
+                "(poll)"
+            ]
         },
         "numbered": {
             "enabled": true,

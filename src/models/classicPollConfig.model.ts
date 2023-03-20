@@ -3,5 +3,5 @@ export interface IClassicPollConfig {
     allChannels: boolean;
     channels: string[];
     emojis: any;
-    keyword: string;
+    keywords: string[];
 }
