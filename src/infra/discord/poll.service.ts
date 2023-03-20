@@ -3,8 +3,7 @@ import { Message } from "discord.js";
 import { INumberedPoll } from "src/models/numberedPoll.model";
 import * as CONFING_JSON from '../../config.json';
 import { DiscordClient } from "./discordClient";
-import { IClassicPollConfig } from "src/models/classicPollConfig.model";
-import { INumberedPollConfig } from "src/models/numberedPollConfig.model";
+import { IConfig } from "src/models/config/config.model";
 
 const NUMBERS_REACTS_MAP = new Map([
     [1, "1️⃣"],
@@ -18,45 +17,30 @@ const NUMBERS_REACTS_MAP = new Map([
     [9, "9️⃣"],
 ]);
 
-const CONFIG: any = (CONFING_JSON as any).default;
+const CONFIG: IConfig = (CONFING_JSON as any).default;
+const CLASSIC_POLL_CONFIG = CONFIG.polls.classic;
+const NUMBERED_POLL_CONFIG = CONFIG.polls.numbered;
 
 @Injectable()
 export class PollService {
     private discordClient: DiscordClient;
-    private classicPollConfig: IClassicPollConfig;
-    private numberedPollConfig: INumberedPollConfig;
 
     constructor(
         @Inject(Injector) private injector: Injector
     ) {
         this.discordClient = this.injector.get<DiscordClient>(DiscordClient);
-
-        const classicPollsConfig = CONFIG.polls.classic;
-        this.classicPollConfig = {
-            enabled: classicPollsConfig.enabled,
-            allChannels: classicPollsConfig.allChannels,
-            channels: classicPollsConfig.channels.map((channel: any) => channel.id),
-            emojis: classicPollsConfig.emojis,
-            keywords: classicPollsConfig.keywords
-        }
-
-        const numberedPollsConfig = CONFIG.polls.numbered;
-        this.numberedPollConfig = {
-            enabled: numberedPollsConfig.enabled,
-            allChannels: numberedPollsConfig.allChannels,
-            channels: numberedPollsConfig.channels.map((channel: any) => channel.id)
-        }
     }
 
     public handleClassicPolls(message: Message) {
-        if (!this.classicPollConfig.enabled) {
+        if (!CLASSIC_POLL_CONFIG.enabled) {
             return;
         }
-        if (this.classicPollConfig.allChannels ||
-            this.classicPollConfig.channels.includes(message.channelId) && this.classicPollConfig.keywords.some(v => message.content.includes(v))) {
+        if (CLASSIC_POLL_CONFIG.allChannels ||
+            CLASSIC_POLL_CONFIG.channels.map(channel => channel.id).includes(message.channelId) &&
+            CLASSIC_POLL_CONFIG.keywords.some(v => message.content.includes(v))) {
             try {
-                for (let i = 0; i < this.classicPollConfig.emojis.length; i++) {
-                    const emojiConfig = this.classicPollConfig.emojis[i];
+                for (let i = 0; i < CLASSIC_POLL_CONFIG.emojis.length; i++) {
+                    const emojiConfig = CLASSIC_POLL_CONFIG.emojis[i];
                     if (emojiConfig.standard) {
                         message.react(emojiConfig.id);
                     } else {
@@ -70,10 +54,10 @@ export class PollService {
     }
 
     public handleNumberedPolls(message: Message) {
-        if (!this.numberedPollConfig.enabled) {
+        if (!NUMBERED_POLL_CONFIG.enabled) {
             return;
         }
-        if (this.numberedPollConfig.allChannels || this.numberedPollConfig.channels.includes(message.channelId)) {
+        if (NUMBERED_POLL_CONFIG.allChannels || NUMBERED_POLL_CONFIG.channels.includes(message.channelId)) {
             let numberedPoll = this.getFirstNumberedPoll(message.content);
             if (numberedPoll == null) {
                 return;
