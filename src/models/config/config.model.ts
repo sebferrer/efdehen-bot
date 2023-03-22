@@ -1,4 +1,4 @@
-import { IPollsConfig } from "./polls.config";
+import { IPollsConfig } from "./pollsConfig.model";
 
 export interface IConfig {
     polls: IPollsConfig;

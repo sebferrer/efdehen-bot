@@ -12,6 +12,10 @@
                 {
                     "id": "1073972470543024148",
                     "label": "FDN Orga Par Sorties"
+                },
+                {
+                    "id": "1062129921176121414",
+                    "label": "Kimida test"
                 }
             ],
             "emojis": [
@@ -45,6 +49,10 @@
                 {
                     "id": "1073972470543024148",
                     "label": "FDN Orga Par Sorties"
+                },
+                {
+                    "id": "1062129921176121414",
+                    "label": "Kimida test"
                 }
             ]
         }
