@@ -85,7 +85,7 @@ export class PollService {
     }
 
     private getFirstNumberedPoll(str: string): INumberedPoll {
-        const pattern = /\b([1-9])\-([2-9])\b/g;
+        const pattern = /\(([1-9])\-([2-9])\)/g;
 
         let match: RegExpExecArray | null;
         while ((match = pattern.exec(str)) !== null) {

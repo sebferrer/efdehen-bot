@@ -21,4 +21,4 @@ discordClient.on(Events.MessageCreate, (message: Message) => {
     pollService.handleNumberedPolls(message);
 })
 
-discordClient.login(process.env.TOKEN);
+discordClient.login(process.env.EFDEHEN_TOKEN);
