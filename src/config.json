@@ -6,20 +6,20 @@
             "subChannels": true,
             "channels": [
                 {
-                    "id": "1062129921176121414",
-                    "label": "Kimida Test"
-                },
-                {
-                    "id": "1087171556955922442",
-                    "label": "TFDN Efdehen Test"
-                },
-                {
                     "id": "951186293507907635",
                     "label": "FDN Sorties Fleuries"
                 },
                 {
                     "id": "1073972470543024148",
                     "label": "FDN Orga Par Sorties"
+                },
+                {
+                    "id": "1062129921176121414",
+                    "label": "Kimida Test"
+                },
+                {
+                    "id": "1087171556955922442",
+                    "label": "TFDN Efdehen Test"
                 }
             ],
             "emojis": [
@@ -47,20 +47,20 @@
             "subChannels": true,
             "channels": [
                 {
-                    "id": "1062129921176121414",
-                    "label": "Kimida Test"
-                },
-                {
-                    "id": "1087171556955922442",
-                    "label": "TFDN Efdehen Test"
-                },
-                {
                     "id": "951186293507907635",
                     "label": "FDN Sorties Fleuries"
                 },
                 {
                     "id": "1073972470543024148",
                     "label": "FDN Orga Par Sorties"
+                },
+                {
+                    "id": "1062129921176121414",
+                    "label": "Kimida Test"
+                },
+                {
+                    "id": "1087171556955922442",
+                    "label": "TFDN Efdehen Test"
                 }
             ]
         }

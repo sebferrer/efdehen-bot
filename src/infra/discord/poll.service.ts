@@ -4,6 +4,7 @@ import { INumberedPoll } from "src/models/numberedPoll.model";
 import * as CONFING_JSON from '../../config.json';
 import { DiscordClient } from "./discordClient";
 import { IConfig } from "src/models/config/config.model";
+import { IChannel, IChannelConfig } from "src/models";
 
 const NUMBERS_REACTS_MAP = new Map([
     [1, "1️⃣"],
@@ -35,14 +36,14 @@ export class PollService {
         if (!CLASSIC_POLL_CONFIG.enabled) {
             return;
         }
-        const allowedChannels = CLASSIC_POLL_CONFIG.channels.map(channel => channel.id);
+        const allowedChannels = CLASSIC_POLL_CONFIG.channels.map((channel: IChannelConfig) => channel.id);
         const channel = message.channel as TextChannel;
         if (CLASSIC_POLL_CONFIG.allChannels ||
             (
                 allowedChannels.includes(message.channelId) ||
                 CLASSIC_POLL_CONFIG.subChannels && allowedChannels.includes(channel.parentId)
             ) &&
-            CLASSIC_POLL_CONFIG.keywords.some(v => message.content.includes(v))) {
+            CLASSIC_POLL_CONFIG.keywords.some((v: string) => message.content.includes(v))) {
             try {
                 for (let i = 0; i < CLASSIC_POLL_CONFIG.emojis.length; i++) {
                     const emojiConfig = CLASSIC_POLL_CONFIG.emojis[i];
@@ -62,7 +63,7 @@ export class PollService {
         if (!NUMBERED_POLL_CONFIG.enabled) {
             return;
         }
-        const allowedChannels = NUMBERED_POLL_CONFIG.channels.map(channel => channel.id);
+        const allowedChannels = NUMBERED_POLL_CONFIG.channels.map((channel: IChannelConfig) => channel.id);
         const channel = message.channel as TextChannel;
         if (NUMBERED_POLL_CONFIG.allChannels ||
             (
@@ -84,7 +85,7 @@ export class PollService {
     }
 
     private getFirstNumberedPoll(str: string): INumberedPoll {
-        const pattern = /\b([1-9])\-([2-9])\b/g;
+        const pattern = /\(([1-9])\-([2-9])\)/g;
 
         let match: RegExpExecArray | null;
         while ((match = pattern.exec(str)) !== null) {
