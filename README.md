@@ -49,6 +49,12 @@ npm run deploy-commands
 npm start
 ```
 
+### Run with pm2
+
+```shell
+pm2 start ecosystem.config.cjs
+```
+
 ### Deploy commands & Run with vite-node (dev)
 
 ```shell
