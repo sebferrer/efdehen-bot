@@ -4,7 +4,7 @@ import { INumberedPoll } from "src/models/numberedPoll.model";
 import * as CONFING_JSON from '../../config.json';
 import { DiscordClient } from "./discordClient";
 import { IConfig } from "src/models/config/config.model";
-import { IChannel, IChannelConfig } from "src/models";
+import { IChannelConfig } from "src/models";
 
 const NUMBERS_REACTS_MAP = new Map([
     [1, "1️⃣"],
